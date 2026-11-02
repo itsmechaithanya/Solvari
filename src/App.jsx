@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import LocomotiveScroll from 'locomotive-scroll'
 import 'locomotive-scroll/locomotive-scroll.css'
-import Home from './components/Home'
+import Homee from './components/Homee'
 
 function App() {
   useEffect(() => {
@@ -13,14 +13,24 @@ function App() {
       },
     })
 
+    const resizeObserver = new ResizeObserver(() => {
+      locomotiveScroll.resize()
+    })
+    resizeObserver.observe(document.body)
+
+    const handleLoad = () => locomotiveScroll.resize()
+    window.addEventListener('load', handleLoad)
+
     return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener('load', handleLoad)
       locomotiveScroll.destroy()
     }
   }, [])
 
   return (
     <div data-scroll-container>
-      <Home />
+      <Homee />
     </div>
   )
 }

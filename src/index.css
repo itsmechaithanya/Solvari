@@ -4,17 +4,34 @@
 @layer utilities {
   .font-gilroy-bold {
     font-family: 'Gilroy-Bold', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 700;
+    font-weight: 400; /* 'Gilroy-Bold' font is already bold; 400 prevents browser double-bolding */
   }
 
   .font-gilroy-medium {
     font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 500;
+    font-weight: 400;
+  }
+
+  /* Between Medium and Bold: uses Gilroy-Medium with 600 weight and stroke
+     so it is clearly distinct from Medium while remaining lighter than Bold */
+  .font-gilroy-semibold {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    -webkit-text-stroke: 0.03em currentColor;
   }
 
   .font-gilroy-light {
     font-family: 'Gilroy-Light', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 300;
+  }
+
+  /* "st" = Standard Text. Body copy style used site-wide
+     (originally the About section paragraphs). Fixed rem size, no vw/clamp. */
+  .text-st {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.45;
   }
 
   .font-times {

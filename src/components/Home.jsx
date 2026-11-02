@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import homeImg from '../assets/Home.png'
 import jayImg from '../assets/jayhome.png'
 import whatjayImg from '../assets/whatjay.png'
 import Navbar from './Navbar'
@@ -113,76 +112,8 @@ function Home() {
           {/* Top Header Navigation */}
           <Navbar />
 
-          {/* Main Hero Section */}
-          <div className="relative w-full flex items-center justify-center my-auto py-6 sm:py-8 select-none">
-            <div className="relative flex items-center justify-center max-w-[95rem] w-full">
-
-              {/* Angel Sculpture Image */}
-              <div className="relative z-20 shrink-0 -mr-[6vw] sm:-mr-[8vw] md:-mr-[9vw] lg:-mr-[8vw] xl:-mr-[7.5vw] -mt-4 sm:-mt-6 pointer-events-none">
-                <img
-                  src={homeImg}
-                  alt="Solvari Angel"
-                  className="w-[38vw] min-w-[18vw] max-w-[42vw] max-h-[70vh] h-auto object-contain"
-                  draggable="false"
-                />
-              </div>
-
-              {/* Typographic Layout */}
-              <div className="relative z-10 flex flex-col justify-center text-black">
-
-                {/* Line 1: The PURPOSE of research isn't for */}
-                <div className="flex items-baseline gap-1.5 sm:gap-2.5 md:gap-3 pl-6 sm:pl-10 md:pl-14 lg:pl-16 mb-0.5 sm:mb-1">
-                  <span className="font-times italic font-bold text-base sm:text-xl md:text-2xl lg:text-[2.2vw] tracking-tight text-black">
-                    The
-                  </span>
-                  <span
-                    className="font-helvetica font-black text-2xl sm:text-4xl md:text-5xl lg:text-[4.2vw] uppercase tracking-[-0.04em] leading-none text-black"
-                    style={{ fontStretch: 'condensed' }}
-                  >
-                    PURPOSE
-                  </span>
-                  <span className="font-times italic font-bold text-base sm:text-xl md:text-2xl lg:text-[2.4vw] tracking-tight ml-0.5 sm:ml-1 text-black">
-                    of research
-                  </span>
-                  <span className="font-ballet italic text-2xl sm:text-3xl md:text-4xl lg:text-[3.6vw] font-normal ml-1.5 sm:ml-3 text-black transform -translate-y-1.5 sm:-translate-y-2">
-                    isn't for
-                  </span>
-                </div>
-
-                {/* Line 2: THE PAPER it is */}
-                <div className="flex items-baseline gap-2 sm:gap-3 md:gap-4 leading-[0.80]">
-                  <span
-                    className="font-helvetica font-black text-5xl sm:text-7xl md:text-9xl lg:text-[8.5vw] uppercase tracking-[-0.05em] text-black"
-                  >
-                    THE PAPER
-                  </span>
-                  <span className="font-times italic font-normal text-2xl sm:text-3xl md:text-4xl lg:text-[3.2vw] tracking-tight ml-1 sm:ml-2.5 text-black">
-                    it is
-                  </span>
-                </div>
-
-                {/* Line 3: WHAT COMES */}
-                <div className="leading-[0.80] mt-0.5 sm:mt-1">
-                  <span
-                    className="font-helvetica font-black text-5xl sm:text-7xl md:text-9xl lg:text-[8.5vw] uppercase tracking-[-0.05em] text-black"
-                  >
-                    WHAT COMES
-                  </span>
-                </div>
-
-                {/* Line 4: next. */}
-                <div className="flex justify-end mt-0.5 sm:mt-1 pr-1 sm:pr-2 md:pr-4">
-                  <span
-                    className="font-helvetica font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[3vw] tracking-[-0.02em] leading-none text-black"
-                  >
-                    next.
-                  </span>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
+          {/* Main Hero Section (intentionally blank) */}
+          <div className="flex-1" aria-hidden="true" />
 
           {/* Bottom Footer */}
           <footer className="w-full">
@@ -221,70 +152,69 @@ function Home() {
 
         </div>
       </section>
-
+      <div className='h-[10vh]'></div>
       {/* About Section (100vh) */}
-      <section className="w-full min-h-screen lg:h-screen bg-white text-black flex flex-col justify-between px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20 selection:bg-black selection:text-white">
+      <section className="w-full min-h-screen lg:h-screen bg-white text-black flex flex-col justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-14 pt-8 sm:pt-10 lg:pt-12 pb-6 sm:pb-8 lg:pb-10 selection:bg-black selection:text-white">
         <div className="w-full max-w-[95rem] mx-auto h-full flex flex-col justify-between">
 
           {/* Top Headline Block */}
           <div className="flex flex-col items-start">
-            <p className="font-gilroy-medium text-sm sm:text-base md:text-[1.0625rem] lg:text-[1.125rem] text-[#737373] mb-3 sm:mb-4">
+            <p className="font-gilroy-medium text-sm sm:text-base md:text-[1.0625rem] lg:text-[1.8rem] text-[#737373] mb-3 sm:mb-4">
               Human first. Always.
             </p>
-            <h2 className="font-gilroy-bold text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] xl:text-[2.375rem] leading-[1.18] text-black">
-              A Research studio based in Chicago,<br />
-              operating worldwide. We design technology<br />
-              where empathy, precision, and impact are<br />
-              felt, not compromised.
+            <h2 className="font-gilroy-semibold text-[1.65rem] sm:text-3xl md:text-[2.2rem] lg:text-[2.5rem] xl:text-[2.65rem] leading-[1.18] tracking-[0.04em] text-[#191919]">
+              A studio that researches, designs and <br />
+              builds software, AI systems and digital <br />
+              infrastructure for enterprise and <br />
+              public-interest clients.
             </h2>
           </div>
 
           {/* Content Row: Image on left, two columns offset down on the right */}
-          <div className="flex flex-col lg:flex-row items-start pt-10 sm:pt-14 lg:pt-0">
+          <div className="flex flex-col lg:flex-row items-start lg:items-end justify-start pt-10 sm:pt-14 lg:pt-0">
 
             {/* Column 1: Image & Caption */}
-            <div className="shrink-0 flex flex-col items-center">
-              <div className="w-[45vw] sm:w-[28vw] md:w-[20vw] lg:w-[15vw] max-w-[15vw] min-w-[10vw]">
+            <div className="shrink-0 flex flex-col items-end">
+              <div className="w-[15.5rem] max-w-full">
                 <img
                   src={jayImg}
                   alt="Jay L. Cunningham"
-                  className="w-[45vw] sm:w-[28vw] md:w-[20vw] lg:w-[15vw] h-auto max-h-[35vh] aspect-[3/4] object-cover"
+                  className="w-full h-auto object-cover"
                 />
               </div>
-              <p className="font-gilroy-medium text-[0.6875rem] sm:text-[0.75rem] text-[#737373] text-center mt-2.5 tracking-tight">
+              <p className="font-gilroy-medium text-[0.75rem] text-[#737373] text-center mt-2.5 mr-1.5">
                 Jay L. Cunningham
               </p>
             </div>
 
-            {/* Right Group: Two text columns with gap, pushed down relative to the photo */}
-            <div className="flex flex-col sm:flex-row items-start gap-8 sm:gap-10 lg:gap-14 ml-0 lg:ml-[11%] xl:ml-[14%] mt-8 lg:mt-[4.5rem] xl:mt-[5rem]">
+            {/* Right Group: Two text columns, bottom-aligned beside the photo */}
+            <div className="flex flex-col sm:flex-row items-start gap-8 lg:gap-16 mt-10 lg:mt-0 ml-0 lg:ml-[11.5rem] xl:ml-[13.5rem] lg:mb-[3.5rem]">
 
               {/* Text Column 1 */}
-              <div className="w-full sm:w-[16.25rem] md:w-[17.5rem] lg:w-[18.125rem] shrink-0 flex flex-col gap-6 font-gilroy-medium text-[0.78125rem] sm:text-[0.8125rem] md:text-[0.84375rem] leading-[1.46] text-black">
+              <div className="w-full sm:w-[19.5rem] lg:w-[20rem] shrink-0 flex flex-col gap-[1.45em] text-st text-black">
                 <p>
-                  Solvari turns human-centered research into technology built for the real world. We bring together research, design, engineering, and responsible AI to understand complex problems and build systems that serve people better.
+                  Solvari designs and builds technology for the real world: custom software, AI systems, platforms and digital infrastructure.
                 </p>
                 <p>
-                  Because every system exists within a human context, we start by understanding the people,
+                  We bring research, design, engineering and responsible AI together under one roof, so every system we ship is built around the people it serves.
                 </p>
               </div>
 
               {/* Text Column 2 */}
-              <div className="w-full sm:w-[16.875rem] md:w-[18.125rem] lg:w-[18.75rem] shrink-0 flex flex-col gap-6 font-gilroy-medium text-[0.78125rem] sm:text-[0.8125rem] md:text-[0.84375rem] leading-[1.46] text-black">
+              <div className="w-full sm:w-[19.5rem] lg:w-[20rem] shrink-0 flex flex-col gap-[1.45em] text-st text-black">
                 <p>
-                  environments, and constraints around it. Our approach combines rigorous research with contextual design, creating solutions grounded in evidence rather than assumptions.
+                  Every project starts with understanding: the people, environments and constraints around the problem. That evidence shapes what we design and how we build it.
                 </p>
                 <p>
-                  Rather than stopping at insights, we take research into action — designing, building, and evaluating technology that can make a meaningful difference in the world.
+                  Then we evaluate it in the real world, so the work keeps getting better long after launch.
                 </p>
               </div>
-
             </div>
-
           </div>
 
         </div>
       </section>
+      <div className='h-[15vh]'></div>
 
       {/* Work / Projects Section */}
       <section className="w-full min-h-screen bg-white text-black flex flex-col justify-center px-0 py-16 sm:py-20 lg:py-24 overflow-x-hidden selection:bg-black selection:text-white">
