@@ -1,6 +1,12 @@
 @import url('https://fonts.cdnfonts.com/css/gilroy-bold');
 @import "tailwindcss";
 
+/* Hover transitions without an explicit duration use the same pace as the reveals */
+@theme {
+  --default-transition-duration: 1000ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @layer utilities {
   .font-gilroy-bold {
     font-family: 'Gilroy-Bold', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -58,9 +64,25 @@
 
 html,
 body {
+  /* black in dark mode, white in light mode (--inv animated from Menu.jsx) */
+  background-color: rgb(calc(var(--inv, 0) * 255) calc(var(--inv, 0) * 255) calc(var(--inv, 0) * 255));
+  color: var(--c-ffffff);
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+img,
+video {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+[data-scroll-strip="true"] img,
+[data-scroll-strip="true"] video {
+  pointer-events: none;
 }
 
 html::-webkit-scrollbar,
@@ -83,3 +105,68 @@ body::-webkit-scrollbar {
   animation: marquee 18s linear infinite;
   will-change: transform;
 }
+
+/* ---------- Light / dark theme ----------
+   Every UI colour is a variable that blends from its dark value to its light
+   (inverted) value as --inv goes 0 -> 1 (animated from Menu.jsx).
+   Photos, videos and the accent banners use no variables, so they never change. */
+:root {
+  --c-000000: color-mix(in srgb, #000000, #ffffff calc(var(--inv, 0) * 100%));
+  --c-070707: color-mix(in srgb, #070707, #f8f8f8 calc(var(--inv, 0) * 100%));
+  --c-080808: color-mix(in srgb, #080808, #f7f7f7 calc(var(--inv, 0) * 100%));
+  --c-0b0b0b: color-mix(in srgb, #0b0b0b, #f4f4f4 calc(var(--inv, 0) * 100%));
+  --c-171717: color-mix(in srgb, #171717, #e8e8e8 calc(var(--inv, 0) * 100%));
+  --c-1a1a1a: color-mix(in srgb, #1a1a1a, #e5e5e5 calc(var(--inv, 0) * 100%));
+  --c-3a3a3a: color-mix(in srgb, #3a3a3a, #c5c5c5 calc(var(--inv, 0) * 100%));
+  --c-3d3d3d: color-mix(in srgb, #3d3d3d, #c2c2c2 calc(var(--inv, 0) * 100%));
+  --c-424242: color-mix(in srgb, #424242, #bdbdbd calc(var(--inv, 0) * 100%));
+  --c-464646: color-mix(in srgb, #464646, #b9b9b9 calc(var(--inv, 0) * 100%));
+  --c-616161: color-mix(in srgb, #616161, #9e9e9e calc(var(--inv, 0) * 100%));
+  --c-808080: color-mix(in srgb, #808080, #7f7f7f calc(var(--inv, 0) * 100%));
+  --c-878787: color-mix(in srgb, #878787, #787878 calc(var(--inv, 0) * 100%));
+  --c-8c8c8c: color-mix(in srgb, #8c8c8c, #737373 calc(var(--inv, 0) * 100%));
+  --c-999999: color-mix(in srgb, #999999, #666666 calc(var(--inv, 0) * 100%));
+  --c-a4a4a4: color-mix(in srgb, #a4a4a4, #5b5b5b calc(var(--inv, 0) * 100%));
+  --c-bbbbbb: color-mix(in srgb, #bbbbbb, #444444 calc(var(--inv, 0) * 100%));
+  --c-c7c7c7: color-mix(in srgb, #c7c7c7, #383838 calc(var(--inv, 0) * 100%));
+  --c-e1e1e1: color-mix(in srgb, #e1e1e1, #1e1e1e calc(var(--inv, 0) * 100%));
+  --c-f8f8f8: color-mix(in srgb, #f8f8f8, #070707 calc(var(--inv, 0) * 100%));
+  --c-ffffff: color-mix(in srgb, #ffffff, #000000 calc(var(--inv, 0) * 100%));
+  --c-1e1e1e: color-mix(in srgb, #1e1e1e, #e1e1e1 calc(var(--inv, 0) * 100%));
+  --c-383838: color-mix(in srgb, #383838, #c7c7c7 calc(var(--inv, 0) * 100%));
+  --c-5b5b5b: color-mix(in srgb, #5b5b5b, #a4a4a4 calc(var(--inv, 0) * 100%));
+  --c-b9b9b9: color-mix(in srgb, #b9b9b9, #464646 calc(var(--inv, 0) * 100%));
+  /* Menu panel is always dark, but sits lighter over the white page in light mode,
+     so links/lines get a bit brighter there to stay readable */
+  --menu-link: color-mix(in srgb, #5b5b5b, #a3a3a3 calc(var(--inv, 0) * 100%));
+  --menu-line: color-mix(in srgb, #383838, #6b6b6b calc(var(--inv, 0) * 100%));
+  --row-hover: color-mix(in srgb, #1a1a1a, #f5f5f5 calc(var(--inv, 0) * 100%));
+}
+
+/* Project strip images: blur driven by --img-blur (animated in Homee.jsx) */
+img.project-img,
+video.project-img {
+  filter: blur(var(--img-blur, 0px));
+}
+
+/* Strip cursor pill: arrows only show in drag mode */
+[data-mode='click'] .cursor-arrow {
+  display: none;
+}
+
+/* Divider lines that draw in from left to right (--line animated 0 -> 1 in Homee.jsx) */
+.line-t::before,
+.line-b::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--c-3d3d3d);
+  transform: scaleX(var(--line, 0));
+  transform-origin: left;
+  opacity: var(--line, 0);
+  pointer-events: none;
+}
+.line-t::before { top: 0; }
+.line-b::after { bottom: 0; }

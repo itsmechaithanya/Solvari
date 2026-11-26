@@ -1,0 +1,99 @@
+@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+@import "tailwindcss";
+
+@layer utilities {
+  .font-gilroy-bold {
+    font-family: 'Gilroy-Bold', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400; /* 'Gilroy-Bold' font is already bold; 400 prevents browser double-bolding */
+  }
+
+  .font-gilroy-medium {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+  }
+
+  /* Between Medium and Bold: uses Gilroy-Medium with 600 weight and stroke
+     so it is clearly distinct from Medium while remaining lighter than Bold */
+  .font-gilroy-semibold {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    -webkit-text-stroke: 0.03em currentColor;
+  }
+
+  .font-gilroy-light {
+    font-family: 'Gilroy-Light', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 300;
+  }
+
+  /* "st" = Standard Text. Body copy style used site-wide
+     (originally the About section paragraphs). Fixed rem size, no vw/clamp. */
+  .text-st {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .font-times {
+    font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+  }
+
+  .font-helvetica {
+    font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .font-ballet {
+    font-family: "Ballet", cursive;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+html,
+body {
+  background-color: #ffffff;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+img,
+video {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+[data-scroll-strip="true"] img,
+[data-scroll-strip="true"] video {
+  pointer-events: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+  will-change: transform;
+}

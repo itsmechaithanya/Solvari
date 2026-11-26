@@ -1,0 +1,137 @@
+@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+@import "tailwindcss";
+
+@layer utilities {
+  .font-gilroy-bold {
+    font-family: 'Gilroy-Bold', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400; /* 'Gilroy-Bold' font is already bold; 400 prevents browser double-bolding */
+  }
+
+  .font-gilroy-medium {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+  }
+
+  /* Between Medium and Bold: uses Gilroy-Medium with 600 weight and stroke
+     so it is clearly distinct from Medium while remaining lighter than Bold */
+  .font-gilroy-semibold {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    -webkit-text-stroke: 0.03em currentColor;
+  }
+
+  .font-gilroy-light {
+    font-family: 'Gilroy-Light', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 300;
+  }
+
+  /* "st" = Standard Text. Body copy style used site-wide
+     (originally the About section paragraphs). Fixed rem size, no vw/clamp. */
+  .text-st {
+    font-family: 'Gilroy-Medium', 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .font-times {
+    font-family: "Times New Roman", Times, "Playfair Display", Georgia, serif;
+  }
+
+  .font-helvetica {
+    font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .font-ballet {
+    font-family: "Ballet", cursive;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+html,
+body {
+  /* black in dark mode, white in light mode (--inv animated from Menu.jsx) */
+  background-color: rgb(calc(var(--inv, 0) * 255) calc(var(--inv, 0) * 255) calc(var(--inv, 0) * 255));
+  color: #ffffff;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+img,
+video {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+[data-scroll-strip="true"] img,
+[data-scroll-strip="true"] video {
+  pointer-events: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+  will-change: transform;
+}
+
+/* ---------- Light mode ----------
+   The site is built dark. Light mode inverts each page section back to light,
+   then re-inverts photos/videos so they look normal.
+   Accent banners (.accent-banner) are left out entirely, so lime/pink/cyan
+   and their black text are exactly the same in both modes.
+   --inv (0 = dark, 1 = light) and --theme-blur are animated from Menu.jsx. */
+html.theme-fx {
+  filter: blur(var(--theme-blur, 0px));
+}
+html.theme-fx [data-page] > *:not(.accent-banner),
+html.theme-fx [data-menu-root] > *,
+html.theme-fx .theme-invert {
+  filter: invert(var(--inv, 0)) hue-rotate(calc(var(--inv, 0) * 180deg));
+}
+html.theme-fx img:not(.invert),
+html.theme-fx video {
+  filter: invert(var(--inv, 0)) hue-rotate(calc(var(--inv, 0) * 180deg));
+}
+
+/* Project row hover grey, tuned per theme.
+   Light mode is an inverted dark page, so #0a0a0a shows up as a soft #f5f5f5. */
+:root {
+  --row-hover: #1a1a1a;
+}
+html.theme-is-light {
+  --row-hover: #0a0a0a;
+}
+
+/* Project strip images: blur driven by --img-blur (animated in Homee.jsx) */
+img.project-img {
+  filter: blur(var(--img-blur, 0px));
+}
+html.theme-fx img.project-img {
+  filter: invert(var(--inv, 0)) hue-rotate(calc(var(--inv, 0) * 180deg)) blur(var(--img-blur, 0px));
+}
